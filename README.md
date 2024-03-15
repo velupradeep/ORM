@@ -4,10 +4,6 @@
 ## AIM
 To develop a Django application to store and retrieve data from a Book database using Object Relational Mapping(ORM).
 
-## Entity Relationship Diagram
-
-Include your ER diagram here
-
 ## DESIGN STEPS
 
 ### STEP 1:
@@ -24,7 +20,27 @@ Execute Django admin and create details for 10 books
 
 ## PROGRAM
 
-Include your code here
+```
+admin.py
+
+from django.contrib import admin
+from .models import Book,BookAdmin
+admin.site.register(Book,BookAdmin)
+
+models.py
+
+from django.db import models
+from django.contrib import admin
+class Book(models.Model):
+   bookid=models.IntegerField(primary_key=True);
+   bookname=models.CharField(max_length=30);
+   bookprice=models.IntegerField();
+   author=models.CharField(max_length=30);
+   qty=models.IntegerField();
+class BookAdmin(admin.ModelAdmin):
+   list_display=("bookid","bookname","bookprice","author","qty");
+
+```
 
 ## OUTPUT
 
